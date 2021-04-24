@@ -1,25 +1,15 @@
 @font-face {
-  font-family: 'Linearicons';
-  src:  url('/src/assets/fonts/Linearicons.eot?4t1dgh');
-  src:  url('/src/assets/fonts/Linearicons.eot?4t1dgh#iefix') format('embedded-opentype'),
-  url('/src/assets/fonts/Linearicons.ttf?4t1dgh') format('truetype'),
-  url('/src/assets/fonts/Linearicons.woff?4t1dgh') format('woff'),
-  url('/src/assets/fonts/Linearicons.svg?4t1dgh#Linearicons') format('svg');
+  font-family: "Linearicons";
   font-weight: normal;
   font-style: normal;
-
-  src: url('/src/assets/fonts/Linearicons.eot'); /* For IE6-8 */
-  src: local('Linearicons'),
-  local('Linearicons'),
-  url('/src/assets/fonts/Linearicons.woff') format('woff'),
-  url('/src/assets/fonts/Linearicons.ttf') format('truetype');
+  src: url("/assets/fonts/Linearicons.woff");
 }
 
 .linearicons,
-
-[class^="linearicons-"], [class*=" linearicons-"] {
+[class^="linearicons-"],
+[class*=" linearicons-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'Linearicons' !important;
+  font-family: "Linearicons" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
