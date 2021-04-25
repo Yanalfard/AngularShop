@@ -1,0 +1,22 @@
+<div class="tile_products">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="heading_tab_header">
+        <div class="heading_s2">
+          <h2>محصولات برجسته</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="product_slider product_list carousel_slider owl-carousel owl-theme nav_style3" data-loop="true"
+        data-dots="false" data-nav="true" data-margin="20"
+        data-responsive='{"0":{"items": "1"}, "767":{"items": "2"}, "991":{"items": "3"}, "1199":{"items": "3"}}'>
+        <div class="item" *ngFor="let i of [0,1,2,3,4]">
+          <app-product-tile *ngFor="let i of [0,1,2]"></app-product-tile>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

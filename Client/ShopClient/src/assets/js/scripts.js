@@ -1,24 +1,10 @@
-/*===================================
-Author       : Bestwebcreator.
-Template Name: Shopwise - eCommerce Bootstrap 4 HTML Template
-Version      : 1.0
-===================================*/
-
-/*===================================*
-PAGE JS
-*===================================*/
-
-(function ($) {
-  'use strict';
-
+var reloadJS = () => {
   /*===================================*
-  01. LOADING JS
-  /*===================================*/
-  $(window).on('load', function () {
-    setTimeout(function () {
-      $(".preloader").delay(700).fadeOut(700).addClass('loaded');
-    }, 800);
-  });
+01. LOADING JS
+/*===================================*/
+  setTimeout(function () {
+    $(".preloader").delay(700).fadeOut(700).addClass('loaded');
+  }, 800);
 
   /*===================================*
   02. BACKGROUND IMAGE JS
@@ -34,37 +20,34 @@ PAGE JS
   /*===================================*
   03. ANIMATION JS
   *===================================*/
-  $(function () {
 
-    function ckScrollInit(items, trigger) {
-      items.each(function () {
-        var ckElement = $(this),
-          AnimationClass = ckElement.attr('data-animation'),
-          AnimationDelay = ckElement.attr('data-animation-delay');
+  function ckScrollInit(items, trigger) {
+    items.each(function () {
+      var ckElement = $(this),
+        AnimationClass = ckElement.attr('data-animation'),
+        AnimationDelay = ckElement.attr('data-animation-delay');
 
-        ckElement.css({
-          '-webkit-animation-delay': AnimationDelay,
-          '-moz-animation-delay': AnimationDelay,
-          'animation-delay': AnimationDelay,
-          opacity: 0
-        });
-
-        var ckTrigger = (trigger) ? trigger : ckElement;
-
-        ckTrigger.waypoint(function () {
-          ckElement.addClass("animated").css("opacity", "1");
-          ckElement.addClass('animated').addClass(AnimationClass);
-        }, {
-          triggerOnce: true,
-          offset: '90%',
-        });
+      ckElement.css({
+        '-webkit-animation-delay': AnimationDelay,
+        '-moz-animation-delay': AnimationDelay,
+        'animation-delay': AnimationDelay,
+        opacity: 0
       });
-    }
 
-    ckScrollInit($('.animation'));
-    ckScrollInit($('.staggered-animation'), $('.staggered-animation-wrap'));
+      var ckTrigger = (trigger) ? trigger : ckElement;
 
-  });
+      ckTrigger.waypoint(function () {
+        ckElement.addClass("animated").css("opacity", "1");
+        ckElement.addClass('animated').addClass(AnimationClass);
+      }, {
+        triggerOnce: true,
+        offset: '90%',
+      });
+    });
+  }
+
+  ckScrollInit($('.animation'));
+  ckScrollInit($('.staggered-animation'), $('.staggered-animation-wrap'));
 
   /*===================================*
   04. MENU JS
@@ -82,24 +65,22 @@ PAGE JS
   });
 
   //Show Hide dropdown-menu Main navigation
-  $(document).on('ready', function () {
-    $('.dropdown-menu a.dropdown-toggler').on('click', function () {
-      //var $el = $( this );
-      //var $parent = $( this ).offsetParent( ".dropdown-menu" );
-      if (!$(this).next().hasClass('show')) {
-        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-      }
-      var $subMenu = $(this).next(".dropdown-menu");
-      $subMenu.toggleClass('show');
+  $('.dropdown-menu a.dropdown-toggler').on('click', function () {
+    //var $el = $( this );
+    //var $parent = $( this ).offsetParent( ".dropdown-menu" );
+    if (!$(this).next().hasClass('show')) {
+      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+    }
+    var $subMenu = $(this).next(".dropdown-menu");
+    $subMenu.toggleClass('show');
 
-      $(this).parent("li").toggleClass('show');
+    $(this).parent("li").toggleClass('show');
 
-      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
-        $('.dropdown-menu .show').removeClass("show");
-      });
-
-      return false;
+    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function () {
+      $('.dropdown-menu .show').removeClass("show");
     });
+
+    return false;
   });
 
   //Hide Navbar Dropdown After Click On Links
@@ -117,11 +98,11 @@ PAGE JS
 
   });
 
-  $(document).on('ready', function () {
-    if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
+  if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
+    if(!document.querySelector('.header_sticky_bar')){
       $(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
     }
-  });
+  }
 
   $(window).on('scroll', function () {
     var scroll = $(window).scrollTop();
@@ -141,9 +122,7 @@ PAGE JS
     $('.header_sticky_bar').css({ 'height': height_header });
   };
 
-  $(window).on('load', function () {
-    setHeight();
-  });
+  setHeight();
 
   $(window).on('resize', function () {
     setHeight();
@@ -153,8 +132,10 @@ PAGE JS
     $(this).addClass('open');
     $('body').addClass('sidetoggle_active');
     $('.sidebar_menu').addClass('active');
-    $("body").append('<div id="header-overlay" class="header-overlay"></div>');
+    // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
   });
+
+  document.querySelectorAll('.search_overlay')[1]?.parentElement.removeChild(document.querySelectorAll('.search_overlay')[1]);
 
   $(document).on('click', '#header-overlay, .sidemenu_close', function () {
     $('.sidetoggle').removeClass('open');
@@ -263,35 +244,33 @@ PAGE JS
   06. SEARCH JS
   *===================================*/
 
-  $(document).on('ready', () => {
-    $(".close-search").on("click", function () {
+  $(".close-search").on("click", function () {
+    $(".search_wrap,.search_overlay").removeClass('open');
+    $("body").removeClass('search_open');
+  });
+
+  var removeClass = true;
+  $(".search_wrap").after('<div class="search_overlay"></div>');
+  $(".search_trigger").on('click', function () {
+    $(".search_wrap,.search_overlay").toggleClass('open');
+    $("body").toggleClass('search_open');
+    removeClass = false;
+    if ($('.navbar-collapse').hasClass('show')) {
+      $(".navbar-collapse").removeClass('show');
+      $(".navbar-toggler").addClass('collapsed');
+      $(".navbar-toggler").attr("aria-expanded", false);
+    }
+  });
+  $(".search_wrap form").on('click', function () {
+    removeClass = false;
+  });
+  $("html").on('click', function () {
+    if (removeClass) {
+      $("body").removeClass('open');
       $(".search_wrap,.search_overlay").removeClass('open');
       $("body").removeClass('search_open');
-    });
-
-    var removeClass = true;
-    $(".search_wrap").after('<div class="search_overlay"></div>');
-    $(".search_trigger").on('click', function () {
-      $(".search_wrap,.search_overlay").toggleClass('open');
-      $("body").toggleClass('search_open');
-      removeClass = false;
-      if ($('.navbar-collapse').hasClass('show')) {
-        $(".navbar-collapse").removeClass('show');
-        $(".navbar-toggler").addClass('collapsed');
-        $(".navbar-toggler").attr("aria-expanded", false);
-      }
-    });
-    $(".search_wrap form").on('click', function () {
-      removeClass = false;
-    });
-    $("html").on('click', function () {
-      if (removeClass) {
-        $("body").removeClass('open');
-        $(".search_wrap,.search_overlay").removeClass('open');
-        $("body").removeClass('search_open');
-      }
-      removeClass = true;
-    });
+    }
+    removeClass = true;
   });
 
   /*===================================*
@@ -316,75 +295,71 @@ PAGE JS
   /*===================================*
   08. PARALLAX JS
   *===================================*/
-  $(window).on('load', function () {
-    $('.parallax_bg').parallaxBackground();
-  });
+  $('.parallax_bg').parallaxBackground();
 
   /*===================================*
   09. MASONRY JS
   *===================================*/
-  $(window).on("load", function () {
-    var $grid_selectors = $(".grid_container");
-    var filter_selectors = ".grid_filter > li > a";
-    if ($grid_selectors.length > 0) {
-      $grid_selectors.imagesLoaded(function () {
-        if ($grid_selectors.hasClass("masonry")) {
-          $grid_selectors.isotope({
-            itemSelector: '.grid_item',
-            percentPosition: true,
-            layoutMode: "masonry",
-            masonry: {
-              columnWidth: '.grid-sizer'
-            },
-          });
-        }
-        else {
-          $grid_selectors.isotope({
-            itemSelector: '.grid_item',
-            percentPosition: true,
-            layoutMode: "fitRows",
-          });
-        }
-      });
-    }
-
-    //isotope filter
-    $(document).on("click", filter_selectors, function () {
-      $(filter_selectors).removeClass("current");
-      $(this).addClass("current");
-      var dfselector = $(this).data('filter');
+  var $grid_selectors = $(".grid_container");
+  var filter_selectors = ".grid_filter > li > a";
+  if ($grid_selectors.length > 0) {
+    $grid_selectors.imagesLoaded(function () {
       if ($grid_selectors.hasClass("masonry")) {
         $grid_selectors.isotope({
           itemSelector: '.grid_item',
+          percentPosition: true,
           layoutMode: "masonry",
           masonry: {
-            columnWidth: '.grid_item'
+            columnWidth: '.grid-sizer'
           },
-          filter: dfselector
         });
       }
       else {
         $grid_selectors.isotope({
           itemSelector: '.grid_item',
+          percentPosition: true,
           layoutMode: "fitRows",
-          filter: dfselector
         });
       }
-      return false;
     });
+  }
 
-    $('.portfolio_filter').on('change', function () {
+  //isotope filter
+  $(document).on("click", filter_selectors, function () {
+    $(filter_selectors).removeClass("current");
+    $(this).addClass("current");
+    var dfselector = $(this).data('filter');
+    if ($grid_selectors.hasClass("masonry")) {
       $grid_selectors.isotope({
-        filter: this.value
+        itemSelector: '.grid_item',
+        layoutMode: "masonry",
+        masonry: {
+          columnWidth: '.grid_item'
+        },
+        filter: dfselector
       });
-    });
+    }
+    else {
+      $grid_selectors.isotope({
+        itemSelector: '.grid_item',
+        layoutMode: "fitRows",
+        filter: dfselector
+      });
+    }
+    return false;
+  });
 
-    $(window).on("resize", function () {
-      setTimeout(function () {
-        $grid_selectors.find('.grid_item').removeClass('animation').removeClass('animated'); // avoid problem to filter after window resize
-        $grid_selectors.isotope('layout');
-      }, 300);
+  $('.portfolio_filter').on('change', function () {
+    $grid_selectors.isotope({
+      filter: this.value
     });
+  });
+
+  $(window).on("resize", function () {
+    setTimeout(function () {
+      $grid_selectors.find('.grid_item').removeClass('animation').removeClass('animated'); // avoid problem to filter after window resize
+      $grid_selectors.isotope('layout');
+    }, 300);
   });
 
   $('.link_container').each(function () {
@@ -455,11 +430,9 @@ PAGE JS
     });
   }
 
+  carousel_slider();
+  slick_slider();
 
-  $(document).on("ready", function () {
-    carousel_slider();
-    slick_slider();
-  });
   /*===================================*
   11. CONTACT FORM JS
   *===================================*/
@@ -607,12 +580,10 @@ PAGE JS
   /*===================================*
     17. COUNTDOWN JS
     *===================================*/
-  $(document).on('ready', () => {
-    $('.countdown_time').each(function () {
-      var endTime = $(this).data('time');
-      $(this).countdown(endTime, function (tm) {
-        $(this).html(tm.strftime('<div class="countdown_box"><div class="countdown-wrap"><span class="countdown days">%D </span><span class="cd_text">روز</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown hours">%H</span><span class="cd_text">ساعت</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown minutes">%M</span><span class="cd_text">دقیقه</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown seconds">%S</span><span class="cd_text">ثانیه</span></div></div>'));
-      });
+  $('.countdown_time').each(function () {
+    var endTime = $(this).data('time');
+    $(this).countdown(endTime, function (tm) {
+      $(this).html(tm.strftime('<div class="countdown_box"><div class="countdown-wrap"><span class="countdown days">%D </span><span class="cd_text">روز</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown hours">%H</span><span class="cd_text">ساعت</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown minutes">%M</span><span class="cd_text">دقیقه</span></div></div><div class="countdown_box"><div class="countdown-wrap"><span class="countdown seconds">%S</span><span class="cd_text">ثانیه</span></div></div>'));
     });
   });
 
@@ -638,29 +609,25 @@ PAGE JS
   /*===================================*
   19. TOOLTIP JS
   *===================================*/
-  $(document).on('ready', () => {
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip({
-        trigger: 'hover',
-      });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+      trigger: 'hover',
     });
-    $(function () {
-      $('[data-toggle="popover"]').popover();
-    });
+  });
+  $(function () {
+    $('[data-toggle="popover"]').popover();
   });
 
   /*===================================*
   20. PRODUCT COLOR JS
   *===================================*/
-  $(document).on('ready', () => {
-    $('.product_color_switch span').each(function () {
-      var get_color = $(this).attr('data-color');
-      $(this).css("background-color", get_color);
-    });
+  $('.product_color_switch span').each(function () {
+    var get_color = $(this).attr('data-color');
+    $(this).css("background-color", get_color);
+  });
 
-    $('.product_color_switch span,.product_size_switch span').on("click", function () {
-      $(this).siblings(this).removeClass('active').end().addClass('active');
-    });
+  $('.product_color_switch span,.product_size_switch span').on("click", function () {
+    $(this).siblings(this).removeClass('active').end().addClass('active');
   });
 
   /*===================================*
@@ -739,8 +706,8 @@ PAGE JS
   });
 
   /*===================================*
- 22. PRICE FILTER JS
- *===================================*/
+  22. PRICE FILTER JS
+  *===================================*/
   $('#price_filter').each(function () {
     var $filter_selector = $(this);
     var a = $filter_selector.data("min-value");
@@ -764,17 +731,15 @@ PAGE JS
   /*===================================*
   23. RATING STAR JS
   *===================================*/
-  $(document).on("ready", function () {
-    $('.star_rating span').on('click', function () {
-      var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
-      var stars = $(this).parent().children('.star_rating span');
-      for (var i = 0; i < stars.length; i++) {
-        $(stars[i]).removeClass('selected');
-      }
-      for (i = 0; i < onStar; i++) {
-        $(stars[i]).addClass('selected');
-      }
-    });
+  $('.star_rating span').on('click', function () {
+    var onStar = parseFloat($(this).data('value'), 10); // The star currently selected
+    var stars = $(this).parent().children('.star_rating span');
+    for (var i = 0; i < stars.length; i++) {
+      $(stars[i]).removeClass('selected');
+    }
+    for (i = 0; i < onStar; i++) {
+      $(stars[i]).addClass('selected');
+    }
   });
 
   /*===================================*
@@ -799,51 +764,15 @@ PAGE JS
   /*===================================*
   25. Cart Page Payment option
   *===================================*/
-  $(document).on('ready', function () {
-    $('[name="payment_option"]').on('change', function () {
-      var $value = $(this).attr('value');
-      $('.payment-text').slideUp();
-      $('[data-method="' + $value + '"]').slideDown();
-    });
+  $('[name="payment_option"]').on('change', function () {
+    var $value = $(this).attr('value');
+    $('.payment-text').slideUp();
+    $('[data-method="' + $value + '"]').slideDown();
   });
 
-  /*===================================*
-  26. ONLOAD POPUP JS
-  *===================================*/
+  console.log('JS reloaded');
+}
 
-  $(window).on('load', function () {
-    setTimeout(function () {
-      $("#onload-popup").modal('show', {}, 500);
-    }, 3000);
+// // runs the first time the user has entered the Site
+// reloadJS();
 
-  });
-
-  /*===================================*
-  *===================================*/
-  //$( window ).on( "load", function() {
-  //		document.onkeydown = function(e) {
-  //			if(e.keyCode == 123) {
-  //			 return false;
-  //			}
-  //			if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
-  //			 return false;
-  //			}
-  //			if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
-  //			 return false;
-  //			}
-  //			if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
-  //			 return false;
-  //			}
-  //
-  //			if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
-  //			 return false;
-  //			}
-  //		 };
-  //
-  //		$("html").on("contextmenu",function(){
-  //			return false;
-  //		});
-  //	});
-
-
-})(jQuery);

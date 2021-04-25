@@ -33,6 +33,13 @@ import { UserLayoutComponent } from './pages/user/user-layout/user-layout.compon
 import { UserNavigationComponent } from './pages/user/user-navigation/user-navigation.component';
 import { MapComponent } from './components/map/map.component';
 import { ProductComponent } from './pages/product/product.component';
+import { SliderComponent } from './pages/home/slider/slider.component';
+import { TabbedProductsComponent } from './pages/home/tabbed-products/tabbed-products.component';
+import { TodaysSalesComponent } from './pages/home/todays-sales/todays-sales.component';
+import { TileProductsComponent } from './pages/home/tile-products/tile-products.component';
+import { BrandsComponent } from './pages/home/brands/brands.component';
+import { ProductBlockComponent } from './components/product-block/product-block.component';
+import { ProductTileComponent } from './components/product-tile/product-tile.component';
 
 
 
@@ -67,7 +74,14 @@ import { ProductComponent } from './pages/product/product.component';
     UserLayoutComponent,
     UserNavigationComponent,
     MapComponent,
-    ProductComponent
+    ProductComponent,
+    SliderComponent,
+    TabbedProductsComponent,
+    TodaysSalesComponent,
+    TileProductsComponent,
+    BrandsComponent,
+    ProductBlockComponent,
+    ProductTileComponent,
   ],
   imports: [
     BrowserModule,
