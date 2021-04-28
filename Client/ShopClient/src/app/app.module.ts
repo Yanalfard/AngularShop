@@ -40,6 +40,7 @@ import { TileProductsComponent } from './pages/home/tile-products/tile-products.
 import { BrandsComponent } from './pages/home/brands/brands.component';
 import { ProductBlockComponent } from './components/product-block/product-block.component';
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
+import { SaleBannerComponent } from './pages/home/sale-banner/sale-banner.component';
 
 
 
@@ -82,6 +83,7 @@ import { ProductTileComponent } from './components/product-tile/product-tile.com
     BrandsComponent,
     ProductBlockComponent,
     ProductTileComponent,
+    SaleBannerComponent,
   ],
   imports: [
     BrowserModule,
