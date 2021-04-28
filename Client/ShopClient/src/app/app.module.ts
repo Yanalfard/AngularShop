@@ -41,6 +41,10 @@ import { BrandsComponent } from './pages/home/brands/brands.component';
 import { ProductBlockComponent } from './components/product-block/product-block.component';
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
 import { SaleBannerComponent } from './pages/home/sale-banner/sale-banner.component';
+import { BlogBlockComponent } from './components/blog-block/blog-block.component';
+import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
+import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-block/recent-blog-block.component';
+
 
 
 
@@ -84,6 +88,10 @@ import { SaleBannerComponent } from './pages/home/sale-banner/sale-banner.compon
     ProductBlockComponent,
     ProductTileComponent,
     SaleBannerComponent,
+    BlogBlockComponent,
+    BlogSidebarComponent,
+    RecentBlogBlockComponent,
+
   ],
   imports: [
     BrowserModule,

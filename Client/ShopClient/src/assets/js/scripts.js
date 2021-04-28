@@ -56,10 +56,12 @@ var reloadJS = () => {
   $(window).on('scroll', function () {
     var scroll = $(window).scrollTop();
 
-    if (scroll >= 150) {
+    if (scroll >= 114) {
       $('header.fixed-top').addClass('nav-fixed');
+      document.querySelector('.top-header').style.marginBottom = '67px';
     } else {
       $('header.fixed-top').removeClass('nav-fixed');
+      document.querySelector('.top-header').style.marginBottom = '0px';
     }
 
   });
@@ -99,7 +101,7 @@ var reloadJS = () => {
   });
 
   if ($('.header_wrap').hasClass("fixed-top") && !$('.header_wrap').hasClass("transparent_header") && !$('.header_wrap').hasClass("no-sticky")) {
-    if(!document.querySelector('.header_sticky_bar')){
+    if (!document.querySelector('.header_sticky_bar')) {
       $(".header_wrap").before('<div class="header_sticky_bar d-none"></div>');
     }
   }
@@ -128,14 +130,15 @@ var reloadJS = () => {
     setHeight();
   });
 
-  $('.sidetoggle').on('click', function () {
-    $(this).addClass('open');
-    $('body').addClass('sidetoggle_active');
-    $('.sidebar_menu').addClass('active');
-    // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
-  });
+  // $('.sidetoggle').on('click', function () {
+  //   $(this).addClass('open');
+  //   $('body').addClass('sidetoggle_active');
+  //   $('.sidebar_menu').addClass('active');
+  //   // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
+  // });
 
-  document.querySelectorAll('.search_overlay')[1]?.parentElement.removeChild(document.querySelectorAll('.search_overlay')[1]);
+  document.querySelectorAll('.search_overlay')[1]?.
+    parentElement.removeChild(document.querySelectorAll('.search_overlay')[1]);
 
   $(document).on('click', '#header-overlay, .sidemenu_close', function () {
     $('.sidetoggle').removeClass('open');
@@ -180,31 +183,7 @@ var reloadJS = () => {
   /*===================================*
   05. SMOOTH SCROLLING JS
   *===================================*/
-  // Select all links with hashes
 
-  var topheaderHeight = $(".top-header").innerHeight();
-  var mainheaderHeight = $(".header_wrap").innerHeight();
-  var headerHeight = mainheaderHeight - topheaderHeight - 20;
-  $('a.page-scroll[href*="#"]:not([href="#"])').on('click', function () {
-    $('a.page-scroll.active').removeClass('active');
-    $(this).closest('.page-scroll').addClass('active');
-    // On-page links
-    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-      // Figure out element to scroll to
-      var target = $(this.hash),
-        speed = $(this).data("speed") || 800;
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top - headerHeight
-        }, speed);
-      }
-    }
-  });
   $(window).on('scroll', function () {
     var lastId,
       // All list items
@@ -588,25 +567,6 @@ var reloadJS = () => {
   });
 
   /*===================================*
-  18. List Grid JS
-  *===================================*/
-  $('.shorting_icon').on('click', function () {
-    if ($(this).hasClass('grid')) {
-      $('.shop_container').removeClass('list').addClass('grid');
-      $(this).addClass('active').siblings().removeClass('active');
-    }
-    else if ($(this).hasClass('list')) {
-      $('.shop_container').removeClass('grid').addClass('list');
-      $(this).addClass('active').siblings().removeClass('active');
-    }
-    $(".shop_container").append('<div class="loading_pr"><div class="mfp-preloader"></div></div>');
-    setTimeout(function () {
-      $('.loading_pr').remove();
-      $container.isotope('layout');
-    }, 800);
-  });
-
-  /*===================================*
   19. TOOLTIP JS
   *===================================*/
   $(function () {
@@ -694,39 +654,28 @@ var reloadJS = () => {
     });
   });
 
-  $('.plus').on('click', function () {
-    if ($(this).prev().val()) {
-      $(this).prev().val(+$(this).prev().val() + 1);
-    }
-  });
-  $('.minus').on('click', function () {
-    if ($(this).next().val() > 1) {
-      if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-    }
-  });
-
-  /*===================================*
-  22. PRICE FILTER JS
-  *===================================*/
-  $('#price_filter').each(function () {
-    var $filter_selector = $(this);
-    var a = $filter_selector.data("min-value");
-    var b = $filter_selector.data("max-value");
-    var c = $filter_selector.data("price-sign");
-    $filter_selector.slider({
-      range: true,
-      isRTL: true,
-      min: $filter_selector.data("min"),
-      max: $filter_selector.data("max"),
-      values: [a, b],
-      slide: function (event, ui) {
-        $("#flt_price").html(ui.values[0] + c + " - " + ui.values[1] + c);
-        $("#price_first").val(ui.values[0]);
-        $("#price_second").val(ui.values[1]);
-      }
-    });
-    $("#flt_price").html($filter_selector.slider("values", 0) + c + " - " + $filter_selector.slider("values", 1) + c);
-  });
+  // /*===================================*
+  // 22. PRICE FILTER JS
+  // *===================================*/
+  // $('#price_filter').each(function () {
+  //   var $filter_selector = $(this);
+  //   var a = $filter_selector.data("min-value");
+  //   var b = $filter_selector.data("max-value");
+  //   var c = $filter_selector.data("price-sign");
+  //   $filter_selector.slider({
+  //     range: true,
+  //     isRTL: true,
+  //     min: $filter_selector.data("min"),
+  //     max: $filter_selector.data("max"),
+  //     values: [a, b],
+  //     slide: function (event, ui) {
+  //       $("#flt_price").html(ui.values[0] + c + " - " + ui.values[1] + c);
+  //       $("#price_first").val(ui.values[0]);
+  //       $("#price_second").val(ui.values[1]);
+  //     }
+  //   });
+  //   $("#flt_price").html($filter_selector.slider("values", 0) + c + " - " + $filter_selector.slider("values", 1) + c);
+  // });
 
   /*===================================*
   23. RATING STAR JS
