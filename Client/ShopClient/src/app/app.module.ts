@@ -40,6 +40,9 @@ import { TileProductsComponent } from './pages/home/tile-products/tile-products.
 import { BrandsComponent } from './pages/home/brands/brands.component';
 import { ProductBlockComponent } from './components/product-block/product-block.component';
 import { ProductTileComponent } from './components/product-tile/product-tile.component';
+import { BlogBlockComponent } from './components/blog-block/blog-block.component';
+import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
+import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-block/recent-blog-block.component';
 
 
 
@@ -82,6 +85,9 @@ import { ProductTileComponent } from './components/product-tile/product-tile.com
     BrandsComponent,
     ProductBlockComponent,
     ProductTileComponent,
+    BlogBlockComponent,
+    BlogSidebarComponent,
+    RecentBlogBlockComponent,
   ],
   imports: [
     BrowserModule,

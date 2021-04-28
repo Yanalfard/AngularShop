@@ -13,7 +13,7 @@ export class AppComponent {
         eval(`
         setTimeout(() => {
           reloadJS();
-        }, 10);
+        }, 1);
         `);
 
       }
