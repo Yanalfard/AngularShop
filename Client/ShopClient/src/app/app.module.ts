@@ -45,9 +45,6 @@ import { BlogBlockComponent } from './components/blog-block/blog-block.component
 import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
 import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-block/recent-blog-block.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +88,6 @@ import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-
     BlogBlockComponent,
     BlogSidebarComponent,
     RecentBlogBlockComponent,
-
   ],
   imports: [
     BrowserModule,
