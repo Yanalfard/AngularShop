@@ -1,3 +1,5 @@
+var removeClass = true;
+
 var reloadJS = () => {
   /*===================================*
 01. LOADING JS
@@ -228,7 +230,6 @@ var reloadJS = () => {
     $("body").removeClass('search_open');
   });
 
-  var removeClass = true;
   $(".search_wrap").after('<div class="search_overlay"></div>');
   $(".search_trigger").on('click', function () {
     $(".search_wrap,.search_overlay").toggleClass('open');

@@ -9,6 +9,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   public searchText: string = '';
 
+  @ViewChild("btnSearch")
+  public btnSearch!: ElementRef<HTMLAnchorElement>;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +24,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       document.querySelector('.sidebar_menu')?.classList.add('active');
       // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
     });
-  }
 
+    this.btnSearch.nativeElement.addEventListener('click', () => { });
+
+  }
 }

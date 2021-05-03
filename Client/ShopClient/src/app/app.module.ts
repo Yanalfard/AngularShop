@@ -44,9 +44,10 @@ import { SaleBannerComponent } from './pages/home/sale-banner/sale-banner.compon
 import { BlogBlockComponent } from './components/blog-block/blog-block.component';
 import { BlogSidebarComponent } from './components/blog-sidebar/blog-sidebar.component';
 import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-block/recent-blog-block.component';
-
-
-
+import { ArchiveComponent } from './components/blog-sidebar/archive/archive.component';
+import { ShopBannerComponent } from './components/blog-sidebar/shop-banner/shop-banner.component';
+import { TagComponent } from './components/blog-sidebar/tag/tag.component';
+import { BlogCommentInfoComponent } from './components/blog-comment-info/blog-comment-info.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,10 @@ import { RecentBlogBlockComponent } from './components/blog-sidebar/recent-blog-
     BlogBlockComponent,
     BlogSidebarComponent,
     RecentBlogBlockComponent,
-
+    ArchiveComponent,
+    ShopBannerComponent,
+    TagComponent,
+    BlogCommentInfoComponent,
   ],
   imports: [
     BrowserModule,
