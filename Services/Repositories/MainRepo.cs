@@ -30,7 +30,6 @@ namespace Services.Repositories
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             return true;
-
         }
 
         public virtual bool Delete(TEntity entity)

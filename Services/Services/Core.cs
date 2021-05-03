@@ -43,8 +43,6 @@ namespace Services.Services
         private MainRepo<TblContactU> _contactUs;
         private MainRepo<TblAboutU> _aboutUs;
 
-
-
         public MainRepo<TblAmount> Amount => _amount ??= new MainRepo<TblAmount>(_context);
         public MainRepo<TblSpecialOffer> SpecialOffer => _specialOffer ??= new MainRepo<TblSpecialOffer>(_context);
         public MainRepo<TblCatagory> Catagory => _catagory ??= new MainRepo<TblCatagory>(_context);
