@@ -1,0 +1,2 @@
+{
+    "csharp2ts.propertiesToCamelCase": true,    "csharp2ts.removeConstructors": true,    "csharp2ts.removeUsings": true}
