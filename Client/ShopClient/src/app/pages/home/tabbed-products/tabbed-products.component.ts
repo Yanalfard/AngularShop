@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { observable, Observable } from 'rxjs';
+import { VmHomeProduct } from 'src/app/models/vm/VmHomeProduct';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-tabbed-products',
@@ -7,11 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabbedProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
-  tabIndex: number = 0;
+  // newProducts: Observable<VmHomeProduct[]> = new Observable<VmHomeProduct[]>();
+  // mostRatedProducts: Observable<VmHomeProduct[]> = new Observable<VmHomeProduct[]>();
+
+  newProducts: VmHomeProduct[] = [];
+  mostRatedProducts: VmHomeProduct[] = [];
 
   ngOnInit(): void {
+    // this.newProducts = this.homeService.GetNewProducts2();
+    // this.mostRatedProducts = this.homeService.GetMostRatedProducts3();
+
+    this.homeService.GetNewProducts2().subscribe(i => this.newProducts = i);
+    this.homeService.GetMostRatedProducts3().subscribe(i => this.mostRatedProducts = i);
   }
 
 }

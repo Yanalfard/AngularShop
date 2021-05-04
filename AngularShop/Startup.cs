@@ -15,17 +15,40 @@ namespace AngularShop
 {
     public class Startup
     {
+
+        #region Constants
+
+        readonly static string MyCors = "EnableCors";
+        readonly static string AngularClientDomain = "http://localhost:4200";
+
+        #endregion
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Allow all kinds of traffic between the API and the angular Client
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCors", builder =>
+                {
+                    builder.WithOrigins(AngularClientDomain)
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .Build();
+                });
+            });
+
             services.AddSwaggerGen();
 
         }
@@ -56,6 +79,8 @@ namespace AngularShop
             // specifying the Swagger JSON endpoint.
 
             app.UseHttpsRedirection();
+
+            app.UseCors(MyCors);
 
             app.UseRouting();
 
