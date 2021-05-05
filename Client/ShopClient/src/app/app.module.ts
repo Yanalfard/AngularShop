@@ -1,8 +1,15 @@
+//#region Modules
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+//#endregion
+
+//#region Components
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -48,6 +55,14 @@ import { ArchiveComponent } from './components/blog-sidebar/archive/archive.comp
 import { ShopBannerComponent } from './components/blog-sidebar/shop-banner/shop-banner.component';
 import { TagComponent } from './components/blog-sidebar/tag/tag.component';
 import { BlogCommentInfoComponent } from './components/blog-comment-info/blog-comment-info.component';
+import { HeaderBannerComponent } from './components/header/header-banner/header-banner.component';
+import { SingleBannerComponent } from './pages/home/single-banner/single-banner.component';
+import { ProductImageGalleryComponent } from './components/product-image-gallery/product-image-gallery.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductCommentComponent } from './components/product-comment/product-comment.component';
+import { ProductAdditionalInfoComponent } from './components/product-additional-info/product-additional-info.component';
+
+//#endregion
 
 @NgModule({
   declarations: [
@@ -96,11 +111,18 @@ import { BlogCommentInfoComponent } from './components/blog-comment-info/blog-co
     ShopBannerComponent,
     TagComponent,
     BlogCommentInfoComponent,
+    HeaderBannerComponent,
+    SingleBannerComponent,
+    ProductImageGalleryComponent,
+    ProductDetailComponent,
+    ProductCommentComponent,
+    ProductAdditionalInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

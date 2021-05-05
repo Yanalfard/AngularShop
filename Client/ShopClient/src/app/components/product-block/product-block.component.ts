@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VmHomeProduct } from 'src/app/models/vm/VmHomeProduct';
 
 @Component({
   selector: 'app-product-block',
@@ -9,7 +10,11 @@ export class ProductBlockComponent implements OnInit {
 
   constructor() { }
 
+  @Input("productModel")
+  public productModel: VmHomeProduct = new VmHomeProduct();
+
   ngOnInit(): void {
+
   }
 
 }

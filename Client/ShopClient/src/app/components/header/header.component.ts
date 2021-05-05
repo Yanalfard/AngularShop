@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
     });
 
-    this.btnSearch.nativeElement.addEventListener('click', () => { });
+    // this.btnSearch.nativeElement.addEventListener('click', () => { eval(); });
 
   }
 }

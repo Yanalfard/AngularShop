@@ -37,8 +37,6 @@ Version      : 1.0
 @font-face {
   font-family: "IranYekan";
   src: url("../fonts/iranyekanweblight.woff2");
-  /* src: url('../fonts/iranyekanweblight.eot') format('embedded-opentype'),
-  url('../fonts/iranyekanweblight.woff2') format('woff2'); */
   font-weight: normal;
   font-style: normal;
 }

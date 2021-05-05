@@ -33,8 +33,9 @@ namespace AngularShop.Controllers
         [Route("GetNewProducts2")]
         public IActionResult GetNewProducts2()
         {
+
             DateTime date = DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0));
-            List <TblProduct> sliders = core.Product.Get(i => !i.IsDeleted && i.DateCreated > date).Take(10).ToList();
+            List<TblProduct> sliders = core.Product.Get(i => !i.IsDeleted && i.DateCreated > date).ToList();
             List<VmHomeProduct> result = new List<VmHomeProduct>();
             foreach (TblProduct i in sliders)
                 result.Add(new VmHomeProduct(i));
