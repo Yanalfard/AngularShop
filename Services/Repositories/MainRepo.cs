@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -23,6 +24,11 @@ namespace Services.Repositories
         public virtual EntityEntry Add(TEntity entity)
         {
             return _dbSet.Add(entity);
+        }
+
+        public virtual async Task<EntityEntry> AddAsync(TEntity entity)
+        {
+            return await _dbSet.AddAsync(entity);
         }
 
         public virtual bool Update(TEntity entity)
@@ -60,6 +66,19 @@ namespace Services.Repositories
             }
         }
 
+        public virtual async Task<bool> DeleteByIdAsync(object id)
+        {
+            try
+            {
+                TEntity entity = await _dbSet.FindAsync(id);
+                return entity != null && Delete(entity);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includes = null)
         {
@@ -74,6 +93,20 @@ namespace Services.Repositories
             return query.ToList();
         }
 
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includes = null)
+        {
+            IQueryable<TEntity> query = _dbSet;
+            if (where != null)
+                query = query.Where(where);
+            if (orderBy != null)
+                query = orderBy(query);
+            if (includes != null)
+                foreach (string i in includes.Split(','))
+                    query = query.Include(i);
+            return await query.ToListAsync();
+        }
+
         public virtual bool Any(Expression<Func<TEntity, bool>> where = null)
         {
             if (where != null)
@@ -81,9 +114,21 @@ namespace Services.Repositories
             return false;
         }
 
+        public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> where = null)
+        {
+            if (where != null)
+                return await _dbSet.AnyAsync(where);
+            return false;
+        }
+
         public virtual TEntity GetById(object id)
         {
             return _dbSet.Find(id);
+        }
+
+        public virtual async Task<TEntity> GetByIdAsync(object id)
+        {
+            return await _dbSet.FindAsync(id);
         }
     }
 }
