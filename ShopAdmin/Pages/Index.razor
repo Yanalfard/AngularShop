@@ -1,7 +1,26 @@
 ﻿@page "/"
+@inject Core db
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<ul>
+    <li>@prod.Catagory</li>
+    <li>@prod.DateCreated</li>
+    <li>@prod.DescriptionLongHtml</li>
+    <li>@prod.DescriptionShortHtml</li>
+</ul>
+
+@code {
+
+    TblProduct prod = new TblProduct();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        prod = db.Product.Get().First();
+    }
+}
