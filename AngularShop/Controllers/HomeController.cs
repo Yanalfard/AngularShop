@@ -21,7 +21,7 @@ namespace AngularShop.Controllers
         [Route("GetSliders1")]
         public IActionResult GetSliders1()
         {
-            List<TblBannerAndSlide> sliders = core.BannerAndSlide.Get(i => i.IsSlider && i.IsActive && i.ActiveTill < DateTime.Now).ToList();
+            List<TblBannerAndSlide> sliders = core.BannerAndSlide.Get(i => i.IsSlider && i.IsActive && i.ActiveTill < DateTime.Now).Take(6).ToList();
             List<VmHomeSlider> result = new List<VmHomeSlider>();
             foreach (TblBannerAndSlide i in sliders)
                 result.Add(new VmHomeSlider(i));
@@ -47,7 +47,7 @@ namespace AngularShop.Controllers
         [Route("GetMostRatedProducts3")]
         public IActionResult GetMostRatedProducts3()
         {
-            List<TblProduct> sliders = core.Product.Get(i => !i.IsDeleted && i.TblRates.Average(j => j.Rate) > 4).ToList();
+            List<TblProduct> sliders = core.Product.Get(i => !i.IsDeleted && i.TblRates.Average(j => j.Rate) > 4).Take(10).ToList();
             List<VmHomeProduct> result = new List<VmHomeProduct>();
             foreach (TblProduct i in sliders)
                 result.Add(new VmHomeProduct(i));
@@ -72,7 +72,7 @@ namespace AngularShop.Controllers
         public IActionResult GetDiscountedProducts5()
         {
             List<TblProduct> sliders =
-                core.SpecialOffer.Get(i => i.ValidTill > DateTime.Now).Select(j => j.Product).ToList();
+                core.SpecialOffer.Get(i => i.ValidTill > DateTime.Now).Select(j => j.Product).Take(6).ToList();
             List<VmHomeProduct> result = new List<VmHomeProduct>();
             foreach (TblProduct i in sliders)
                 result.Add(new VmHomeProduct(i));
@@ -96,7 +96,7 @@ namespace AngularShop.Controllers
         [Route("GetProductsAfterBanners7")]
         public IActionResult GetProductsAfterBanners7()
         {
-            List<TblProduct> sliders = core.Product.Get(i => !i.IsDeleted).Randomize().ToList();
+            List<TblProduct> sliders = core.Product.Get(i => !i.IsDeleted).Randomize().Take(10).ToList();
             List<VmHomeProductSpecial> result = new List<VmHomeProductSpecial>();
             foreach (TblProduct i in sliders)
                 result.Add(new VmHomeProductSpecial(i));
