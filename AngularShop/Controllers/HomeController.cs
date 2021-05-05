@@ -26,7 +26,7 @@ namespace AngularShop.Controllers
             foreach (TblBannerAndSlide i in sliders)
                 result.Add(new VmHomeSlider(i));
 
-            return Ok(result);
+            return Ok(result.Take(3));
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace AngularShop.Controllers
             foreach (TblProduct i in sliders)
                 result.Add(new VmHomeProduct(i));
 
-            return Ok(result);
+            return Ok(result.Take(3));
         }
 
         [HttpGet]

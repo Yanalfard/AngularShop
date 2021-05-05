@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VmHomeProduct } from 'src/app/models/vm/VmHomeProduct';
+import { VmAmount } from 'src/app/models/vm/VmAmount';
+import { VmHomeProduct } from '../../models/vm/VmHomeProduct';
 
 @Component({
   selector: 'app-product-block',
@@ -8,13 +9,17 @@ import { VmHomeProduct } from 'src/app/models/vm/VmHomeProduct';
 })
 export class ProductBlockComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input("productModel")
   public productModel: VmHomeProduct = new VmHomeProduct();
 
-  ngOnInit(): void {
+  selectedAmount: VmAmount = new VmAmount;
 
+  ngOnInit(): void {
+    this.selectedAmount = this.productModel?.availableAmount[0] ?? new VmAmount();
+    console.log(this.selectedAmount);
   }
 
 }

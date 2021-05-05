@@ -139,6 +139,7 @@ var reloadJS = () => {
   //   // $("body").append('<div id="header-overlay" class="header-overlay"></div>');
   // });
 
+
   document.querySelectorAll('.search_overlay')[1]?.
     parentElement.removeChild(document.querySelectorAll('.search_overlay')[1]);
 

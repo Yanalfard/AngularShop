@@ -61,6 +61,9 @@ import { ProductImageGalleryComponent } from './components/product-image-gallery
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductCommentComponent } from './components/product-comment/product-comment.component';
 import { ProductAdditionalInfoComponent } from './components/product-additional-info/product-additional-info.component';
+import { DiscountPipe } from './pipes/discount.pipe';
+import { TestComponent } from './pages/test/test.component';
+import { ImgFallbackDirective } from './directives/img-fallback.directive';
 
 //#endregion
 
@@ -117,6 +120,9 @@ import { ProductAdditionalInfoComponent } from './components/product-additional-
     ProductDetailComponent,
     ProductCommentComponent,
     ProductAdditionalInfoComponent,
+    DiscountPipe,
+    TestComponent,
+    ImgFallbackDirective,
   ],
   imports: [
     BrowserModule,
