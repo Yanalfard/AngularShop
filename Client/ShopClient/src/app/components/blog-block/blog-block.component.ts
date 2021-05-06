@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { VmBlogList } from './../../models/vm/VmBlogList';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-blog-block',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-block.component.scss']
 })
 export class BlogBlockComponent implements OnInit {
+
+  @Input("blogModel")
+  public blogModel: VmBlogList = new VmBlogList();
 
   constructor() { }
 
