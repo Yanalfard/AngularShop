@@ -12,6 +12,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductComponent } from './pages/product/product.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { SearchComponent } from './pages/search/search.component';
+import { TestComponent } from './pages/test/test.component';
 import { AddressComponent } from './pages/user/address/address.component';
 import { CartComponent } from './pages/user/cart/cart.component';
 import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
@@ -58,6 +59,7 @@ const routes: Routes = [
 
     ]
   },
+  { path: 'test', component: TestComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

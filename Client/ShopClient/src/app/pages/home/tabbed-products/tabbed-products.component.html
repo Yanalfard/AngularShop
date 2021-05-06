@@ -1,4 +1,4 @@
-<div class="tabbed_products">
+<!-- <div class="tabbed_products">
   <div class="row">
     <div class="col-12">
       <div class="heading_tab_header">
@@ -41,7 +41,7 @@
             data-dots="false" data-nav="true" data-margin="20"
             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
             <div class="item" *ngFor="let item of newProducts ">
-              <app-product-block [productModel]="item"></app-product-block>
+              <app-product-block></app-product-block>
             </div>
           </div>
         </div>
@@ -50,11 +50,11 @@
             data-dots="false" data-nav="true" data-margin="20"
             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
             <div class="item" *ngFor="let item of mostRatedProducts ">
-              <app-product-block [productModel]="item"></app-product-block>
+              <app-product-block></app-product-block>
             </div>
           </div>
         </div>
-        <!-- <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+        <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
           <div class="product_slider carousel_slider owl-carousel owl-theme nav_style1" data-loop="true"
             data-dots="false" data-nav="true" data-margin="20"
             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
@@ -71,7 +71,44 @@
               <app-product-block></app-product-block>
             </div>
           </div>
-        </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="tabbed_products">
+  <div class="row">
+    <div class="col-12">
+      <div class="heading_tab_header">
+        <div class="heading_s2">
+          <h2>محصولات اختصاصی</h2>
+        </div>
+        <div class="tab-style2">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabmenubar"
+            aria-expanded="false">
+            <span class="ion-android-menu"></span>
+          </button>
+          <ul class="nav nav-tabs justify-content-center justify-content-md-end" id="tabmenubar" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" (click)="tabIndex = 0">محصولات پرفروش</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" (click)="tabIndex = 1">محصولات جدید</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-switch" [ngSwitch]="tabIndex">
+    <div *ngSwitchDefault class="row">
+      <div class="col-4" *ngFor="let product of mostRatedProducts">
+        <app-product-block [productModel]="product"></app-product-block>
+      </div>
+    </div>
+    <div *ngSwitchCase="1" class="row">
+      <div class="col-4" *ngFor="let product of newProducts">
+        <app-product-block [productModel]="product"></app-product-block>
       </div>
     </div>
   </div>

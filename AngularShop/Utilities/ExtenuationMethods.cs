@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,13 @@ namespace AngularShop.Utilities
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {
             return source.OrderBy<T, int>((item) => ran.Next());
+        }
+
+        public static string DateToShamsi(this DateTime value)
+        {
+            PersianCalendar calendar = new PersianCalendar();
+            return " " + calendar.GetYear(value) + "/" + calendar.GetMonth(value).ToString("00") + "/" +
+                   calendar.GetDayOfMonth(value).ToString("00");
         }
     }
 }

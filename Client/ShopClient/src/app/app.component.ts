@@ -10,12 +10,16 @@ export class AppComponent {
   constructor(private router: Router) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        eval(`
+        try {
+          eval(`
         setTimeout(() => {
           reloadJS();
         }, 1);
         `);
+        }
+        catch {
 
+        }
       }
     });
   }
