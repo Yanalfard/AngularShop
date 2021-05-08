@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.Services;
 using ShopAdmin.Data;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace ShopAdmin
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<Core>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

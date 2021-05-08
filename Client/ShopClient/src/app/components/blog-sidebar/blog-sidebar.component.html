@@ -13,8 +13,8 @@
   <div class="widget">
     <h5 class="widget_title">پست های اخیر</h5>
     <ul class="widget_recent_post">
-      <li *ngFor="let item of [0,1,2]">
-        <app-recent-blog-block></app-recent-blog-block>
+      <li *ngFor="let item of recentBlogs">
+        <app-recent-blog-block [recentBlogModel]="item"></app-recent-blog-block>
       </li>
     </ul>
   </div>

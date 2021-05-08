@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-9">
           <div class="row blog_thumbs">
-            <app-blog-block *ngFor="let item of [0,1,2,3,4,5]"></app-blog-block>
+            <app-blog-block *ngFor="let item of blogs" [blogModel]="item"></app-blog-block>
           </div>
           <div class="row">
             <!-- PAGINATION -->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { VmHomeProduct } from 'src/app/models/vm/VmHomeProduct';
 import { HomeService } from 'src/app/services/home.service';
@@ -17,13 +17,18 @@ export class TabbedProductsComponent implements OnInit {
 
   newProducts: VmHomeProduct[] = [];
   mostRatedProducts: VmHomeProduct[] = [];
+  tabIndex: number = 0;
 
   ngOnInit(): void {
     // this.newProducts = this.homeService.GetNewProducts2();
     // this.mostRatedProducts = this.homeService.GetMostRatedProducts3();
 
-    this.homeService.GetNewProducts2().subscribe(i => this.newProducts = i);
-    this.homeService.GetMostRatedProducts3().subscribe(i => this.mostRatedProducts = i);
+    // this.homeService.GetNewProducts2().subscribe(i => this.newProducts = i);
+    this.homeService.GetMostRatedProducts3().subscribe(i => {
+      this.mostRatedProducts = i;
+
+
+    });
   }
 
 }
