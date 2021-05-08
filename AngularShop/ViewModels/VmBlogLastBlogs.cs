@@ -11,7 +11,7 @@ namespace AngularShop.ViewModels
         public int BlogId { get; set; }
         public string ImageUrl { get; set; }
         public string Title { get; set; }
-
+        public DateTime DateCreated { get; set; }
         public VmBlogLastBlogs()
         {
 
@@ -22,6 +22,7 @@ namespace AngularShop.ViewModels
             BlogId = blog.BlogId;
             ImageUrl = blog.MainImage;
             Title = blog.Title;
+            DateCreated = blog.DateCreated;
         }
     }
 }
