@@ -1,5 +1,5 @@
 export class TblClient {
-                clientId!: number;
+        clientId!: number;
         tellNo!: string;
         password!: string;
         auth!: string;

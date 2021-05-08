@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VmBlogLastBlogs } from 'src/app/models/vm/VmBlogLastBlogs';
 
 @Component({
   selector: 'app-recent-blog-block',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class RecentBlogBlockComponent implements OnInit {
 
   constructor() { }
+
+@Input('recentBlogModel')
+public recentBlogModel:VmBlogLastBlogs =new VmBlogLastBlogs();
 
   ngOnInit(): void {
   }
