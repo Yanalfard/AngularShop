@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VmMonthlyBlogs } from 'src/app/models/vm/VmMonthlyBlogs';
 
 @Component({
   selector: 'app-blog-archive',
@@ -9,7 +10,11 @@ export class ArchiveComponent implements OnInit {
 
   constructor() { }
 
+  @Input('monthlyBlogModel')
+  public monthlyBlogModel:VmMonthlyBlogs =new VmMonthlyBlogs();
+
   ngOnInit(): void {
+    console.log("archive log is:" + this.monthlyBlogModel);
   }
 
 }

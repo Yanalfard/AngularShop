@@ -80,7 +80,7 @@ namespace AngularShop
 
             app.UseHttpsRedirection();
 
-            app.UseCors(MyCors);
+            //app.UseCors(MyCors);
 
             app.UseRouting();
 

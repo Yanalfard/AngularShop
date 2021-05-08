@@ -1,9 +1,6 @@
 <div class="tags">
-    <!-- TODO: ngFor -->
-    <a href="#">عمومی</a>
-    <a href="#">طرح</a>
-    <a href="#">جی کوئری</a>
-    <a href="#">نام تجاری</a>
-    <a href="#">مدرن</a>
-    <a href="#">وبلاگ</a>
-  </div>
+  <!-- TODO: ngFor -->
+  <a *ngFor="let item of keywordModel" href="#">
+    {{item.Name}}
+  </a>
+</div>

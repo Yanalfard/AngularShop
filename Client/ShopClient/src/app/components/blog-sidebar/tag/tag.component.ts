@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VmKeyword } from 'src/app/models/vm/VmKeyword';
 
 @Component({
   selector: 'app-blog-tag',
@@ -9,7 +10,11 @@ export class TagComponent implements OnInit {
 
   constructor() { }
 
+  @Input('keywordModel')
+  public keywordModel:VmKeyword[] =[];
+
   ngOnInit(): void {
+    console.log("Keyword is: " + this.keywordModel);
   }
 
 }
