@@ -1,9 +1,4 @@
-<h5 class="widget_title">بایگانی</h5>
-    <ul class="widget_archive">
-      <!-- TODO: ngFor -->
-      <li><a href="#"><span class="archive_year">بهمن 1399</span><span class="archive_num">(12)</span></a></li>
-      <li><a href="#"><span class="archive_year">دی 1399</span><span class="archive_num">(5)</span></a></li>
-      <li><a href="#"><span class="archive_year">آذر 1399</span><span class="archive_num">(6)</span></a></li>
-      <li><a href="#"><span class="archive_year">آبان 1399</span><span class="archive_num">(7)</span></a></li>
-      <li><a href="#"><span class="archive_year">مهر 1399</span><span class="archive_num">(10)</span></a></li>
-    </ul>
+<a href="#"><span class="archive_year">{{monthlyBlogModel?.monthName}}</span><span class="archive_num">
+  ({{monthlyBlogModel?.dailyBlogs?.length}})
+</span></a>
+

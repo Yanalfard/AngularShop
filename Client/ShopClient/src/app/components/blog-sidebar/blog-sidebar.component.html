@@ -19,13 +19,18 @@
     </ul>
   </div>
   <div class="widget">
-    <app-blog-archive></app-blog-archive>
+    <h5 class="widget_title">بایگانی</h5>
+    <ul class="widget_archive">
+      <li *ngFor="let item of monthlyBlogs">
+        <app-blog-archive [monthlyBlogModel]="item"></app-blog-archive>
+      </li>
+    </ul>
   </div>
   <div class="widget">
-    <app-shop-banner></app-shop-banner>
+    <app-shop-banner [homeBannerModel]="homeBanners[0]"></app-shop-banner>
   </div>
   <div class="widget">
     <h5 class="widget_title">برچسب ها</h5>
-    <app-blog-tag></app-blog-tag>
+    <app-blog-tag [keywordModel]="keywords"></app-blog-tag>
   </div>
 </div>

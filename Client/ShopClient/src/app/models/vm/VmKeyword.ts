@@ -1,4 +1,4 @@
 export class VmKeyword{
-    KeywordId!: number;
-    Name!: string;
+    keywordId!: number;
+    name!: string;
 }
