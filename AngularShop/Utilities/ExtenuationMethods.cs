@@ -21,5 +21,13 @@ namespace AngularShop.Utilities
             return " " + calendar.GetYear(value) + "/" + calendar.GetMonth(value).ToString("00") + "/" +
                    calendar.GetDayOfMonth(value).ToString("00");
         }
+
+        public static string DateTimeToShamsi(this DateTime value)
+        {
+            PersianCalendar calendar = new PersianCalendar();
+            return " " + calendar.GetYear(value) + "/" + calendar.GetMonth(value).ToString("00") + "/" +
+                   calendar.GetDayOfMonth(value).ToString("00") + " " + value.Hour + ":" +
+                   value.Minute;
+        }
     }
 }
