@@ -14,7 +14,7 @@ export class ArchiveComponent implements OnInit {
   public monthlyBlogModel:VmMonthlyBlogs =new VmMonthlyBlogs();
 
   ngOnInit(): void {
-    console.log("archive log is:" + this.monthlyBlogModel);
+    console.log(this.monthlyBlogModel);
   }
 
 }

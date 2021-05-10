@@ -11,10 +11,10 @@ export class TagComponent implements OnInit {
   constructor() { }
 
   @Input('keywordModel')
-  public keywordModel:VmKeyword[] =[];
+  public keywordModel:VmKeyword[] =[new VmKeyword()];
 
   ngOnInit(): void {
-    console.log("Keyword is: " + this.keywordModel);
+    console.log(this.keywordModel);
   }
 
 }

@@ -1,4 +1,4 @@
 export class VmDailyBlogs{
-    BlogId!: number;  
-    Title!: string;
+    blogId!: number;  
+    title!: string;
 }
